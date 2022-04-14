@@ -659,19 +659,20 @@ int
 showprocs(void){
 	struct proc *p;
 	int count = 0;
-	char state_value = "";
+	char state_value[100] = "SLEEP";
 	
 	printf("ID \t \t ParentID \t State \t Name \t Size(bytes) \t \n");
 	for (p = proc; p < &proc[NPROC]; p++){
 		
 		acquire(&p->lock);
-		if(p->state != UNUSED)
+		if(p->state != UNUSED){
 			if(p->parent == 0)
-				state_value = "SLEEP"
+				state_value = "SLEEP";
 			else
 				state_value = p->state;
 			printf("%d \t %d \t \t %s \t %s \t %d \n" , p->pid, p->parent,state_value, p->name,sizeof(p->name));
 			count++;
+		}
 		release(&p->lock);
 	}
 	
