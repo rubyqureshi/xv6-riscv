@@ -673,7 +673,7 @@ showprocs(void){
 		acquire(&wait_lock);
 		acquire(&p->lock);
 		struct proc *parent_p = p->parent;
-		struct proc parent_p1 = p->parent;
+		struct proc parent_p1 = &p->parent;
 		if(p->state != UNUSED){
 			printf("The parent process with * is: %d \n", parent_p);
 			printf("The parent process with & is: %d \n\n", parent_p1);
