@@ -7,8 +7,9 @@
 void main(void)
 {
   int output1 = totpro();
+  printf("%d", output1);
   int output2 = showprocs();
-  printf("%d %d", output1, output2 );
+  printf("%d", output2 );
   
   exit(0);
 }
