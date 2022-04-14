@@ -5,8 +5,8 @@
 
 int main(void)
 {
-  int output1 = totpro();
+  printf(totpro());
   
-  int output2 = showprocs();
+  printf(showprocs());
   exit(0);
 }
