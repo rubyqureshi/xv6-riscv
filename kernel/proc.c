@@ -662,7 +662,7 @@ showprocs(void){
 	for (p = proc; p < &proc[NPROC]; p++){
 		acquire(&wait_lock);
 		acquire(&p->lock);
-		printf("%d \n",p->state);
+		printf("%d \n",procstate[p->state]);
 		if(p->state != UNUSED){
 			// printf("%d \t %d \t \t %s \t %s \t %d \n" , p->pid, p->parent,"sleeping", p->name,p->sz);
 			count++;
@@ -670,7 +670,7 @@ showprocs(void){
 		release(&p->lock);
 		release(&wait_lock);
 	}
-	printf("There are a total of %d processes in the system. \n", count);
+	printf("There are a total of %d UNUSED processes in the system. \n", count);
 	return 23;
 }
 
