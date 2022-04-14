@@ -663,14 +663,15 @@ showprocs(void){
 	[UNUSED]    "unused",
 	[SLEEPING]  "sleep ",
 	[RUNNABLE]  "runble",
-	[RUNNING]   "run   ",
+	[RUNNING]   "running",
 	[ZOMBIE]    "zombie"
 	};
 	char *state;
+	// int value = 0;
 	for (p = proc; p < &proc[NPROC]; p++){
 		acquire(&wait_lock);
 		acquire(&p->lock);
-		
+		printf("PID is %d \n", (int) getpid());
 		if(p->state != UNUSED){
 			state = states[p->state];
 			printf("%d \t %d \t \t %s \t %s \t %d \n" , p->pid, p->parent,state, p->name,p->sz);
