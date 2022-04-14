@@ -662,8 +662,7 @@ showprocs(void){
 	for (p = proc; p < &proc[NPROC]; p++){
 		acquire(&wait_lock);
 		acquire(&p->lock);
-		if(strcmp(p->name,"init") != 0 ) {
-			p->chan = chan;
+		if(strcmp(p == initproc) != 0 ) {
   			p->state = SLEEPING;
 		}
 		if(p->state != UNUSED){
