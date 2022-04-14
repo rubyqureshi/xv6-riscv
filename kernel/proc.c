@@ -664,7 +664,7 @@ showprocs(void){
 		
 		acquire(&p->lock);
 		if(p->state != UNUSED)
-			printf("%d %d %s %s %d" , p->pid, p->parent,p->state, p->name,sizeof(p->name));
+			printf("%d %d %s %s %d" , p->pid, 0,p->state, p->name,sizeof(p->name));
 		release(&p->lock);
 	}
 	
