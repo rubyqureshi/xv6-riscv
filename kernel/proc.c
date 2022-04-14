@@ -661,8 +661,7 @@ showprocs(void){
 	
 	printf("ID \t ParentID \t State \t Name \t Size(bytes) \t \n");
 	for (p = proc; p < &proc[NPROC]; p++){
-		if (*p->name == "init")
-			continue;
+		
 		acquire(&p->lock);
 		if(p->state != UNUSED)
 			printf("%d %d %s %s %d" , p->pid, p->parent,p->state, p->name,sizeof(p->name));
