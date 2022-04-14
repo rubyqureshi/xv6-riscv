@@ -675,7 +675,7 @@ showprocs(void){
 		//struct proc *parent_p = p->parent;
 		if(p->state != UNUSED){			
 			state = states[p->state];
-			printf("%d \t %d  \t \t %s \t %s \t %d \n" , p->pid,p, p->parent,state, p->name,p->sz);
+			printf("%d \t %d \t %d \t \t %s \t %s \t %d \n" , p->pid,p, p->parent,state, p->name,p->sz);
 			//printf("The current process value in the for loop is: %d \n", p);
 			count++;
 		}
