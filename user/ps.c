@@ -3,9 +3,10 @@
 #include "user/user.h"
 #include "kernel/fcntl.h"
 
-void main()
+int main(int argc, char *argv[])
 {
   totpro();
+  
   showprocs();
-  exit(0);
+  exit();
 }

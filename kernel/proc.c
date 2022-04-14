@@ -659,12 +659,13 @@ int
 showprocs(void){
 	struct proc *p;
 	
+	acquire(&ptable.lock);
 	printf("ID \t ParentID \t State \t Name \t Size(bytes) \t \n");
 	for (p = proc; p < &proc[NPROC]; p++){
 		acquire(&p->lock);
 		if(p->state != UNUSED)
 			printf("%d %d %s %s %d" , p->pid, p->parent,p->state, p->name,sizeof(p->name));
-		release(&p->lock);
+		release(p->lock);
 	}
 	
 	

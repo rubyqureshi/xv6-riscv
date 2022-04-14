@@ -96,11 +96,12 @@ sys_uptime(void)
   return xticks;
 }
 
+int sys_totpro(void) {
+	return totpro();
+}
+
 int
 sys_showprocs(void){
 	return showprocs();
 }
 
-int sys_totpro(void) {
-	return totpro();
-}
