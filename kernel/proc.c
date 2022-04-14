@@ -659,9 +659,9 @@ int
 showprocs(void){
 	struct proc *p;
 	int count = 0;
-	
-	printf("ID \t \t ParentID \t State \t Name \t Size(bytes) \t \n");
 	for (p = proc; p < &proc[NPROC]; p++){
+		if(p->parent !=proc)
+			continue;
 		acquire(&wait_lock);
 		acquire(&p->lock);
 		if(p->state != UNUSED){
@@ -671,8 +671,7 @@ showprocs(void){
 		release(&p->lock);
 		release(&wait_lock);
 	}
-	
-	
+	printf("There are a total of %d processes in the system", count);
 	return 23;
 }
 
