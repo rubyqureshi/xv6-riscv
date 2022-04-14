@@ -662,15 +662,14 @@ showprocs(void){
 	
 	printf("ID \t \t ParentID \t State \t Name \t Size(bytes) \t \n");
 	for (p = proc; p < &proc[NPROC]; p++){
-		
+		acquire(&wait_lock);
 		acquire(&p->lock);
 		if(p->state != UNUSED){
-			acquire(&wait_lock);
 			printf("%d \t %d \t \t %s \t %s \t %d \n" , p->pid, p->parent,"SLEEP", p->name,p->sz);
-			release(&wait_lock);
 			count++;
 		}
 		release(&p->lock);
+		release(&wait_lock);
 	}
 	
 	
