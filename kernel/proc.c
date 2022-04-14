@@ -672,7 +672,7 @@ showprocs(void){
 	for (p = proc; p < &proc[NPROC]; p++){
 		acquire(&wait_lock);
 		acquire(&p->lock);
-		parent_p = p->&parent;
+		parent_p = p->parent;
 		printf("PID is %d \n", parent_p);
 		if(p->state != UNUSED){
 			state = states[p->state];
