@@ -660,18 +660,18 @@ showprocs(void){
 	struct proc *p;
 	int count = 0;
 	for (p = proc; p < &proc[NPROC]; p++){
-		if(p->parent !=proc)
-			continue;
+		if(p->parent ==proc)
+			p->parent = initproc;
 		acquire(&wait_lock);
 		acquire(&p->lock);
 		if(p->state != UNUSED){
-			printf("%d \t %d \t \t %s \t %s \t %d \n" , p->pid, p->parent,"SLEEP", p->name,p->sz);
+			printf("%d \t %d \t \t %s \t %s \t %d \n" , p->pid, p->parent->pid,p->xstate, p->name,p->sz);
 			count++;
 		}
 		release(&p->lock);
 		release(&wait_lock);
 	}
-	printf("There are a total of %d processes in the system", count);
+	printf("There are a total of %d processes in the system. \n", count);
 	return 23;
 }
 
