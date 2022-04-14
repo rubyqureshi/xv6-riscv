@@ -658,6 +658,7 @@ procdump(void)
 int
 showprocs(void){
 	struct proc *p;
+	struct proc *parent_p;
 	int count = 0;
 	static char *states[] = {
 	[UNUSED]    "unused",
@@ -671,7 +672,8 @@ showprocs(void){
 	for (p = proc; p < &proc[NPROC]; p++){
 		acquire(&wait_lock);
 		acquire(&p->lock);
-		printf("PID is %d \n", (int) getpid());
+		parent_p = p->&parent;
+		printf("PID is %d \n", parent_p);
 		if(p->state != UNUSED){
 			state = states[p->state];
 			printf("%d \t %d \t \t %s \t %s \t %d \n" , p->pid, p->parent,state, p->name,p->sz);
