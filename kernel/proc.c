@@ -669,7 +669,7 @@ showprocs(void){
 	};
 	char *state;
 	long old_id=0; long old_addr=0; long parent_id=0;
-	printf("ID \t Process Addr \t ParentID Addr \t State \t Name \t Size(bytes) \t \n");
+	printf("PID \t PPID  \t \t State \t Name \t Size(bytes) \t \n");
 	for (p = proc; p < &proc[NPROC]; p++){
 		acquire(&wait_lock);
 		acquire(&p->lock);
@@ -681,7 +681,7 @@ showprocs(void){
 		}
 		if(p->state != UNUSED){			
 			state = states[p->state];
-			printf("%d \t %d \t %d \t \t %s \t %s \t %d \n" , p->pid,p, parent_id,state, p->name,p->sz);
+			printf("%d \t %d \t \t %s \t %s \t %d \n" , p->pid, parent_id,state, p->name,p->sz);
 			count++;
 			old_id=p->pid; old_addr= (long) p;
 		}
