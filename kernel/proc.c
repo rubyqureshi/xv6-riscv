@@ -682,7 +682,7 @@ totpro(void){
 		acquire(&p->lock);
 		if(p->state != UNUSED)
 			count++;
-			print("name is: %s",p->name);
+			printf("name is: %s",p->name);
 		release(&p->lock);
 	}
 	printf("The count of totpro is: %d \n",count);
