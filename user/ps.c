@@ -3,7 +3,7 @@
 #include "user/user.h"
 #include "kernel/fcntl.h"
 
-void main()
+int main(void)
 {
   totpro();
   
