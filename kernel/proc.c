@@ -668,16 +668,16 @@ showprocs(void){
 	[ZOMBIE]    "zombie"
 	};
 	char *state;
-	int id=0; int old_addr=0; int parent_id=0;
+	int old_id=0; int old_addr=0; int parent_id=0;
 	printf("ID \t Process Addr \t ParentID Addr \t State \t Name \t Size(bytes) \t \n");
 	for (p = proc; p < &proc[NPROC]; p++){
 		acquire(&wait_lock);
 		acquire(&p->lock);
-		if(p->parent==old_addr){
+		if((int) p->parent==old_addr){
 			parent_id = old_id;
 		}
 		else{
-			parent_id = p->parent;
+			parent_id = (int) p->parent;
 		}
 		
 		//struct proc *parent_p = p->parent;
