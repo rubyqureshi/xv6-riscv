@@ -672,19 +672,12 @@ showprocs(void){
 	for (p = proc; p < &proc[NPROC]; p++){
 		acquire(&wait_lock);
 		acquire(&p->lock);
-		struct proc *parent_p = p->parent;
+		//struct proc *parent_p = p->parent;
 		if(p->state != UNUSED){			
-			
-			if(p == initproc){
-				printf("Skipping %d \n", p);
-				continue;
-			}
-			else{
-				state = states[p->state];
-				printf("%d \t %d \t %d \t \t %s \t %s \t %d \n" , p->pid,p, p->parent,parent_p->pid,state, p->name,p->sz);
+			state = states[p->state];
+			printf("%d \t %d  \t \t %s \t %s \t %d \n" , p->pid,p, p->parent,state, p->name,p->sz);
 			//printf("The current process value in the for loop is: %d \n", p);
-				count++;
-			}
+			count++;
 		}
 		release(&p->lock);
 		release(&wait_lock);
