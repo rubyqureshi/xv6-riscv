@@ -665,7 +665,7 @@ showprocs(void){
 		acquire(&wait_lock);
 		acquire(&p->lock);
 		if(p->state != UNUSED){
-			printf("%d \t %d \t \t %s \t %s \t %d \n" , p->pid, p->pid,p->state, p->name,p->sz);
+			printf("%d \t %d \t \t %s \t %s \t %d \n" , p->pid, p->parent,p->xstate, p->name,p->sz);
 			count++;
 		}
 		release(&p->lock);
