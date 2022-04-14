@@ -23,7 +23,6 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
-int ps(void);
 int totpro(void);
 int showprocs(void);
 
