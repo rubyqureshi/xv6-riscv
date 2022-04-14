@@ -660,8 +660,6 @@ showprocs(void){
 	struct proc *p;
 	int count = 0;
 	for (p = proc; p < &proc[NPROC]; p++){
-		if(p->parent ==proc)
-			p->parent = initproc;
 		acquire(&wait_lock);
 		acquire(&p->lock);
 		if(p->state != UNUSED){
