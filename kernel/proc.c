@@ -671,6 +671,7 @@ showprocs(void){
 			else
 				state_value = p->state;
 			printf("%d \t %d \t \t %s \t %s \t %d \n" , p->pid, p->parent,state_value, p->name,sizeof(p->name));
+			count++;
 		release(&p->lock);
 	}
 	
