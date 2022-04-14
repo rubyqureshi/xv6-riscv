@@ -676,12 +676,14 @@ showprocs(void){
 		if(p->state != UNUSED){			
 			state = states[p->state];
 			if(p == initproc){
-				printf("Skipping %d", p);
+				printf("Skipping %d \n", p);
 				continue;
 			}
-			printf("%d \t %d \t %d \t \t %s \t %s \t %d \n" , p->pid,p, p->parent,parent_p->pid,state, p->name,p->sz);
+			else{
+				printf("%d \t %d \t %d \t \t %s \t %s \t %d \n" , p->pid,p, p->parent,parent_p->pid,state, p->name,p->sz);
 			//printf("The current process value in the for loop is: %d \n", p);
-			count++;
+				count++;
+			}
 		}
 		release(&p->lock);
 		release(&wait_lock);
