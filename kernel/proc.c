@@ -675,7 +675,7 @@ showprocs(void){
 		struct proc *parent_p = p->parent;
 		if(p->state != UNUSED){			
 			state = states[p->state];
-			if(p = init){
+			if(p == init){
 				printf("Skipping %d", p);
 				continue;
 			}
