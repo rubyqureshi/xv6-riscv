@@ -686,6 +686,7 @@ int
 totpro(void){
 	struct proc *p;
 	int count = 0;
+	char *state;
 	
 	for(p = proc; p < &proc[NPROC]; p++)
 	{
