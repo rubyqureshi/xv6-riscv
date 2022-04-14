@@ -3,9 +3,9 @@
 #include "user/user.h"
 #include "kernel/fcntl.h"
 
-int main()
+void main()
 {
   totpro();
   showprocs();
-  exit();
+  exit(0);
 }
