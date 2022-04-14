@@ -685,6 +685,6 @@ totpro(void){
 			count++;
 		release(&p->lock);
 	}
-	printf("%d",count);
+	printf("The count of totpro is: %d",count);
 	return 22;
 }
