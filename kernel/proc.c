@@ -669,7 +669,7 @@ showprocs(void){
 	};
 	char *state;
 	long old_id=0; long old_addr=0; long parent_id=0;
-	printf("PID \t PPID  \t \t State \t Name \t Size(bytes) \t \n");
+	printf("PID \t PPID  \t  State \t \t Name \t Size(bytes) \t \n");
 	for (p = proc; p < &proc[NPROC]; p++){
 		acquire(&wait_lock);
 		acquire(&p->lock);
