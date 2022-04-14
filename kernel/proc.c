@@ -673,7 +673,7 @@ showprocs(void){
 	for (p = proc; p < &proc[NPROC]; p++){
 		acquire(&wait_lock);
 		acquire(&p->lock);
-		if( (int) p->parent==old_addr){
+		if( (long) p->parent==old_addr){
 			parent_id = old_id;
 		}
 		else{
