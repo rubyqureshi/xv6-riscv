@@ -662,9 +662,7 @@ showprocs(void){
 	for (p = proc; p < &proc[NPROC]; p++){
 		acquire(&wait_lock);
 		acquire(&p->lock);
-		if(p == initproc) {
-  			p->state = SLEEPING;
-		}
+		printf("%d \n",p->state);
 		if(p->state != UNUSED){
 			printf("%d \t %d \t \t %s \t %s \t %d \n" , p->pid, p->parent,"sleeping", p->name,p->sz);
 			count++;
