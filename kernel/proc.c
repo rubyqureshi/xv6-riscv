@@ -676,7 +676,7 @@ showprocs(void){
 		if(p->state != UNUSED){
 			printf("PID is %d \n", parent_p);
 			state = states[p->state];
-			printf("%d \t %d \t \t %s \t %s \t %d \n" , p->pid, p->parent,state, p->name,p->sz);
+			//printf("%d \t %d \t \t %s \t %s \t %d \n" , p->pid, p->parent,state, p->name,p->sz);
 			count++;
 		}
 		release(&p->lock);
