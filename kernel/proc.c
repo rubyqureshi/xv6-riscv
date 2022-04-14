@@ -659,12 +659,20 @@ int
 showprocs(void){
 	struct proc *p;
 	int count = 0;
+	static char *states[] = {
+	[UNUSED]    "unused",
+	[SLEEPING]  "sleep ",
+	[RUNNABLE]  "runble",
+	[RUNNING]   "run   ",
+	[ZOMBIE]    "zombie"
+	};
 	for (p = proc; p < &proc[NPROC]; p++){
 		acquire(&wait_lock);
 		acquire(&p->lock);
-		printf("%d \n",procstate[p->state]);
+		
 		if(p->state != UNUSED){
-			// printf("%d \t %d \t \t %s \t %s \t %d \n" , p->pid, p->parent,"sleeping", p->name,p->sz);
+			state = states[p->state];
+			printf("%d \t %d \t \t %s \t %s \t %d \n" , p->pid, p->parent,state, p->name,p->sz);
 			count++;
 		}
 		release(&p->lock);
