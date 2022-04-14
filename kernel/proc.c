@@ -666,9 +666,9 @@ showprocs(void){
 		acquire(&p->lock);
 		if(p->state != UNUSED){
 			if(p->parent == 0)
-				printf("%d \t %d \t \t %s \t %s \t %d \n" , p->pid, p->parent,"SLEEP", p->name,sizeof(p->name));
+				printf("%d \t %d \t \t %s \t %s \t %d \n" , p->pid, p->parent,"SLEEP", p->name,p->kstack);
 			else
-				printf("%d \t %d \t \t %s \t %s \t %d \n" , p->pid, p->parent,state_value, p->name,sizeof(p->name));
+				printf("%d \t %d \t \t %s \t %s \t %d \n" , p->pid, p->parent,p->state, p->name,p->kstack);
 			count++;
 		}
 		release(&p->lock);
