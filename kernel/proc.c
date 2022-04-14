@@ -666,6 +666,7 @@ showprocs(void){
 	[RUNNING]   "run   ",
 	[ZOMBIE]    "zombie"
 	};
+	char *state;
 	for (p = proc; p < &proc[NPROC]; p++){
 		acquire(&wait_lock);
 		acquire(&p->lock);
@@ -686,7 +687,7 @@ int
 totpro(void){
 	struct proc *p;
 	int count = 0;
-	char *state;
+	
 	
 	for(p = proc; p < &proc[NPROC]; p++)
 	{
