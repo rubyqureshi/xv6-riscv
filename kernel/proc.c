@@ -662,7 +662,7 @@ showprocs(void){
 	for (p = proc; p < &proc[NPROC]; p++){
 		acquire(&wait_lock);
 		acquire(&p->lock);
-		if(strcmp(p == initproc) != 0 ) {
+		if(p == initproc) {
   			p->state = SLEEPING;
 		}
 		if(p->state != UNUSED){
