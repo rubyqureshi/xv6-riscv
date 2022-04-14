@@ -668,16 +668,25 @@ showprocs(void){
 	[ZOMBIE]    "zombie"
 	};
 	char *state;
-	// int value = 0;
+	int id=0; int old_addr=0; int parent_id=0;
+	printf("ID \t Process Addr \t ParentID Addr \t State \t Name \t Size(bytes) \t \n");
 	for (p = proc; p < &proc[NPROC]; p++){
 		acquire(&wait_lock);
 		acquire(&p->lock);
+		if(p->parent==old_addr){
+			parent_id = old_id;
+		}
+		else{
+			parent_id = p->parent;
+		}
+		
 		//struct proc *parent_p = p->parent;
 		if(p->state != UNUSED){			
 			state = states[p->state];
 			printf("%d \t %d \t %d \t \t %s \t %s \t %d \n" , p->pid,p, p->parent,state, p->name,p->sz);
-			//printf("The current process value in the for loop is: %d \n", p);
+			printf("%d \t %d \t %d \t \t %s \t %s \t %d \n" , p->pid,p, parent_id,state, p->name,p->sz);
 			count++;
+			old_id=p->pid; old_addr=p;
 		}
 		release(&p->lock);
 		release(&wait_lock);
