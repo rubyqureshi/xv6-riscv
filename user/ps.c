@@ -7,9 +7,9 @@
 void main(void)
 {
   int output1 = totpro();
-  printf("%d", output1);
+  printf("Output of totpro is: %d \n", output1);
   int output2 = showprocs();
-  printf("%d", output2 );
+  printf("Output of showprocs is: %d \n", output2 );
   
   exit(0);
 }
